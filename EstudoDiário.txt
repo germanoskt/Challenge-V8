@@ -1,0 +1,354 @@
+@Autowired: conectar dependências entre as classes e instanciar as beans.
+
+
+
+Dia 04/03/2024
+
+A dependência do spring starter test já inclui o Mockito, Hamcrest, AssertJ. São bibliotecas para deixar o código de assertivas
+do Junit mais simples.
+
+
+A anotação @DataJpaTest é utilizada para testar uma interface Repository.
+
+
+Conceitos de teste são separados em três blocos(AAA):
+
+Given ou Arrange: Cadastra as informações.
+
+When ou act: Executa a ação que deseja testar.
+
+Then ou assert: Verifica se o resultado está como esperado.
+
+
+O DAO abstrai todo o acesso ao banco de dados separadamente da lógica de negócio da aplicação. É no DAO que implementamos o método
+CRUD (CREATE - READ - UPDATE - DELETE).
+
+
+Um framework é uma ferramenta que facilita o desenvolvimento dos projetos. Fornecem uma base para organização, padrões de projetos e 
+funcionalidades comuns.
+
+
+O padrão MVC pode ser utitlizado em diversas partes de desenvolvimento. Um exemplo é o MVC sendo usado no desenvolvimento web.
+Onde o M (Model - Modelo) seria o gerenciador dos produtos e pedidos, o V (View - Visão) é responsável por exibir as páginas HTML ao
+usuário fina e o C (Controller - Controlador), manipularia as requisições do usuário, decidindo como os dados são processados e quais páginas
+são exibidas.
+
+
+Tom Cat
+Geralmente refere-se a um software de servidor web, chamado Apache Tom cat. Ele permite que aplicações em Java baseados em web
+sejam executados.
+
+
+DEPLOY:
+
+Para rodar um projeto com o Spring Boot:
+1. Criar um build de um arquivo .jar;
+Para executar basta inserir java no terminal de comando e passar as variáveis de ambiente, colocando qual profile deseja executar.
+
+Ao invés de iniciar o projeto pela IDE, iniciar pelo terminal de comando, esse processo é feito independente do servidor que você estiver.
+
+ 
+Frameworks:
+
+Spring Boot
+
+Micronaut
+
+Quarkus
+
+
+Para gerar imagens nativas com Spring Boot antes da versão 3, era necessário a utilização do projeto Spring Native, que adicionava suporte.
+Com a chegada da versão 3 do Spring boot, não é mais necessário usar o projeto.
+
+
+
+Imagem nativa é uma tecnologia utilizada para compilar as aplicações Java, incluindo as suas dependências, gerando um arquivo binário executável
+que pode ser executado diretamente no sistema operacional sem a necessidade de utilizar a JVM.
+
+
+THREADS:
+
+As threads é uma sequência de execução dentro de um programa. Elas permitem que um programa execute mais de uma tarefa, ou seja, múltiplas tarefas.
+As Threads compartilham recursos do sistema, como a memória, mas cada thread tem seu próprio registro de instruções e pilha de execução. Por isso,
+não é correto dizer que as threads são executadas simultaneamente.
+
+Um exemplo de thread é quando o usuário faz vários downloads em um determinado site.
+
+
+
+
+Hibernate é um framework de mapeamento objeto-relacional (ORM). Ele simplifica aplicações que interagem com o banco de dados. O hibernate cuida
+da geração de consultas(Querys) SQL necessárias para persistir recuperar esses objetos do banco de dados.
+
+Consulta HQL (Hibernate Query Language) exemplo: 
+List<User> users = session.createQuery("FROM User WHERE username LIKE 'jo%'").list();
+
+
+05/03/2024
+
+API JDBC
+
+A API JDBC possibilita que uma aplicação java consiga acessar o banco de dados configurado local ou remoto.
+É composta por componentes (java.sql & javax.sql)
+
+Um driver é uma classe que implementa a interface java.sql.Driver
+
+A classe DriverManager define um conjunto básico de operações para a manipulação do driver adequado para a conexão com o banco de dados.
+
+
+TIPOS DE DRIVERS 
+
+Hoje a arquitetura do JDBC possui quatro tipos de drivers diferentes:
+
+1. A JDBC-ODBC possibilita o acesso a drivers do tipo ODBC, um padrão já consolidado para o acesso a base de dados.
+2. Neste tipo de driver é implementado o protocolo do proprietário do banco de dados.
+3. Este tipo de driver faz a conversão das chamadas JDBC em outras chamadas do banco de dados, que são direcionadas
+para uma camada intermediária de software, ou middleware.
+4. São escritos puramente em java e implementam o protocolo proprietário do banco de dados.
+
+
+UM DRIVER É UMA BIBLIOTECA (JAR), QUE PODEMOS BUSCAR NO MAVEN REPOSITORY.
+
+
+
+06/03/2024
+
+Factory Method
+
+Exceções do tipo  checked são aquelas que herdam diretamente da classe Exception.
+Exceções do tipo unchecked são aquelas com quem "o compilador não se importa tanto", Elas herdam de RuntimeException. 
+
+
+Se tornou um padrão projetos de programação Factory, pode-se pensar justamente na tradução: "Fábrica". Essa classe criada como Factory, ela terá um método que retorna um objeto.
+
+
+
+07/03/2024
+
+Uma transação é um recurso de gerência de banco de dados que faz com que uma sequência de operações seja considerada como um único procedimento.
+
+08/03/2024
+
+- Reunião com Techlead
+
+
+11/03/2024
+
+ORM 
+Mapeamento Objeto relacional;
+
+ORM do Java: Hibernate;
+
+Com funciona?
+
+- Tabelas do banco = classes
+- Registros = instâncias
+
+
+JTA - Java transition API
+
+JTA é a especificação do mundo Java EE que é responsável por definir a API necessária para controlarmos transações dentro das nossas aplicações.
+O controle transacional está presente em quase todo projeto, acabamos usando essa especificação tanto em containers JAVA EE, com um Wildfly, quanto em Servlet Containers, como um TomCat ou Undertow.
+
+
+Quando optamos por rodar nosso código em um servidor de aplicação, ganhamos as implementações de todas especificações que compõem o JAVA EE, entre elas o JTA. 
+
+Por default todo método de um EJB que faz uso de um recurso transacional já é executado sob contexto da JTA automaticamente.
+
+
+
+Tipo de MVC que foi utitizado, Spring MVC, por enquanto.
+
+
+PERSISTENCIA COM JPA = Java Persistence API.
+JPQL = Java Persistence Query Language.
+
+
+Hibernate um biblioteca alternativa ao JDBC/ EJB 2.
+
+
+
+
+12/03/2024
+
+A annotation GeneratedValue serve para verificar se o auto_increment será realizado pelo banco de dados ou pelo algoritmo.
+
+Se caso for pelo banco (GeneratedValue.AUTO)
+Caso for pelo algoritmo (GeneratedValue.IDENTITY )
+
+
+
+13/03/2024
+
+BIDIRECIONAL: Os dois lados tem que se conhecer(Entidades). Para o hibernate não ter que criar outra entidade, coloca-se na anotação do atributo 
+"mappedBy = <nome do atributo da outra classe>". 
+
+
+
+14/03/2024
+
+Atributos getter e setter usa-se Vo no sufixo da classe "NomeDaClasseVo". vo = value object. 
+
+
+SELECT new = para classes que foram criadas e não são entidades, passando o caminho inteiro, inclusive o pacote, por exemplo, "br.v8.tech.NomeDaClasse".
+
+
+Vantagens de usar a annotation NamedQuery = Deixar as consultas de uma entidade mais próximas da classe dela(entidade);
+
+
+15/03/2024
+
+					ESTRATÉGIAS
+API 
+Toda annotation ToOne é carregada automaticamente, já as annotations ToMany não são. 
+ToOne já faz uma consulta join da entidade.
+
+A JPA tem um estratégia de carregamento dos relacionamentos, tais estratégias são chamadas de EAGER ou LAZY.
+
+------------ padrão EAGER ------------
+
+Todo relacionamento ToOne o padrão é ser EAGER(Faz o carregamento antecipado, carrega junto com a entidade).
+Como boa prática, sempre que tiver ToOne, colocar o "fetch = FetchType.LAZY" para carregar somente quando você fizer o acesso.
+
+
+------------ padrão LAZY -------------
+Todo relacionamento ToMany usa-se por padrão o comportamento chamado de LAZY(Faz um carregamento tardio, só carrega se você fizer o acesso ).
+
+
+
+18/03/2024
+
+
+
+JOIN FECTH -- Carrega um relacionamento que é lazy e apenas naquela consulta, ele vira eager.
+
+
+API da JPA CRITERIA, ao invés de usar o JPQL, usa-se os métodos para consulta no banco de dados.
+
+A annotation @Embeddable considera que aquela classe com essa mesma annotation é embutivel. Ela permite embutir um classe dentro de uma entidade.
+Para usar uma classe como herança, usa-se a annotation @Inheritance(strategy = Inheritance.SINGLE_TABLE). SINGLE_TABLE, é como se todos os atributos estivesse somente em uma entidade(por exemplo: uma entidade com vários colunas).
+
+
+Para evitar problemas, é uma boa prática colocar implements Serializable nas classes que contém o @Embeddable.
+
+
+19/03/2024
+
+JAVA - Aplicação Web
+
+@JsonAlias e @JsonProperty
+
+Desenvolvimento do site estático - Projeto PI
+
+Front-end da tela inicial e login (Responsividade).
+
+
+20/03/2024
+
+---------- @JsonProperty-----------
+
+Se você tiver uma classe Java com a propriedade "nomeCompleto" e quiser que ela seja mapeada para o JSON como "nome", você pode usar o @JsonProperty("nome") para especificar o nome correto no JSON:
+
+
+public class Pessoa {
+    @JsonProperty("nome")
+    private String nomeCompleto;
+}
+
+
+
+----------@JsonAlias----------
+
+O @JsonAlias é usado para definir um ou mais apelidos para o nome da propriedade JSON associada ao campo(Atributo) Java.
+
+Se você tiver uma classe Java com a propriedade "nomeCompleto" e o JSON usa "nome" em vez disso, você pode usar o @JsonAlias("nome") para mapear corretamente a propriedade. Dessa forma, tanto "nomeCompleto" quanto "nome" serão aceitos ao fazer o mapeamento:
+
+public class Pessoa {
+    @JsonAlias({"nomeCompleto", "nome"})
+    private String nomeCompleto;
+}
+
+
+Usamos o <T> T justamente quado não sabemos qual entidade será devolvida, ou seja, quando não sabemos o retorno, ele serve como um generics.
+Geralmente, usamos letras maiúsculas únicas para representar os tipos genéricos, mas você pode usar qualquer identificador válido em Java. Aqui está um exemplo de uma classe genérica chamada Caixa, que armazena um valor de um tipo desconhecido:
+
+
+
+
+public class Caixa<T> {
+    private T conteudo;
+
+    public T getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(T conteudo) {
+        this.conteudo = conteudo;
+    }
+}
+
+No exemplo acima, podemos criar um objeto do tipo Caixa e armazenar qualquer tipo de valor no mesmo, veja um exemplo:
+
+public class TestaCaixa {
+    public static void main(String[] args) {
+        Caixa<String> caixaDeTexto = new Caixa();
+        caixaDeTexto.setConteudo("Guardando texto na minha caixa!");
+
+        Caixa<Integer> caixaDeIdade = new Caixa();
+        caixaDeIdade.setConteudo(30);
+
+        Caixa<Double> caixaDeValor = new Caixa<>();
+        caixaDeValor.setConteudo(150.50);
+    }
+}
+
+
+A annotation @JsonIgnoreProperties(ignoreUnknown = true) ignora todo json que não foi chamado na classe, interface, record etc. 
+
+As coleções são estruturas de dados fundamentais no Java, que nos permitem armazenar e manipular conjuntos de elementos de forma eficiente. 
+
+
+Quando eu coloca final em uma variável, por exemplo: 
+public FINAL
+Quer dizer que eu não mvou modificar ela mais pra frente.
+
+
+
+21/03/2024
+
+
+---------LAMBDA---------
+Uma stream é uma sequência de elementos que pode ser processada em paralelo ou em série. A partir daí, podemos realizar diversas operações nessa stream, como filtrar, mapear, ordenar, entre outras.
+
+As operações finais são aquelas que encerram a stream e retornam um resultado concreto. Algumas operações finais comuns são o forEach, collect e count.
+
+As operações intermediárias permitem filtrar, mapear e ordenar os elementos da stream, enquanto as operações finais encerram a stream e retornam um resultado concreto.
+
+
+25/03/2024
+
+Construtores Personalizados
+
+Digamos que você esteja criando uma classe de Carro em Java, onde cada Carro tem uma marca, um modelo e um ano.
+
+public Carro(String marca, String modelo, int ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+
+Sendo assim, quando formos instanciar nosso objeto, ficaria da seguinte forma:
+
+° Carro meuCarro = new Carro("Toyota", "Corolla", 2015);
+
+
+Em resumo, construtores personalizados em Java são uma ferramenta muito útil na criação de objetos, garantindo que todas as propriedades necessárias sejam inicializadas. 
+
+
+
+
+
+
+
+
+
