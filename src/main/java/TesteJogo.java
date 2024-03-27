@@ -25,15 +25,20 @@ public class TesteJogo {
 //        boolean prize4 = rd.nextBoolean();
 
 
-        Game game = new Game(new Door(prize1),
-                new Door(prize2),
-                new Door(prize3),
-                new User());
 
 
 
+
+
+
+        for (int i = 0; i < 1000; i++) {
+            Game game = new Game(new Door(prize1),
+                    new Door(prize2),
+                    new Door(prize3),
+                    new User());
         System.out.println(game);
-
+        game.start();
+        }
 
     }
 }
