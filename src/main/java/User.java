@@ -9,5 +9,4 @@ public class User {
                 .current()
                 .nextInt(0, numberChoosed);
     }
-
 }

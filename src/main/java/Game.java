@@ -28,7 +28,8 @@ public class Game {
         doors.add(door3);
 
         int doorChoosen = user.chooseDoor(doors.size());
-        System.out.printf("Porta escolhida pelo usuario: %d\n",doorChoosen);
+
+        System.out.println("Porta escolhida pelo usuario: " + doors.get(doorChoosen));
 
         // Apresentador abre uma porta
         for (int i = 0; i < doors.size(); i++) {
@@ -41,23 +42,27 @@ public class Game {
                 continue;
             }
             currentDoor.setOpen(true);
-            System.out.format("Porta aberta: %d \n", i);
+            System.out.format("Porta aberta: %d \n", (i + 1));
             break;
         }
 
         // Usuario escolhe trocar a porta
        List<Door> closedDoors = doors.stream().filter(d -> !d.isOpen).toList();
 
-        int finalDoor =  user.chooseDoor(closedDoors.size());
+        int finalDoor = user.chooseDoor(closedDoors.size());
 
         for (Door door : closedDoors) {
             door.setOpen(true);
         }
 
         boolean switchedDoor = false;
-        if (doorChoosen == finalDoor){
-            System.out.println("trocou de porta");
+        //trocamos a referência de comparação
+        //de posição para objetos
+        if (!doors.get(doorChoosen).equals(closedDoors.get(finalDoor))){
             switchedDoor = true;
+            System.out.println("Trocou para a " + closedDoors.get(finalDoor));
+        } else {
+            System.out.println("Não trocou de porta");
         }
 
         Boolean won = false;

@@ -7,9 +7,14 @@ public class TesteJogo {
 
     public static void main(String[] args) {
 
-        int numberRandom = ThreadLocalRandom.current().nextInt(0, 3);
+        int numberOfGames = 50;
+        int switchWin = 0;
+        int keepWin = 0;
 
-        System.out.println("O prêmio está na porta " + numberRandom);
+        for (int i = 0; i < numberOfGames; i++) {
+
+        int numberRandom = ThreadLocalRandom.current().nextInt(0, 3);
+        System.out.println("O prêmio está na porta: " + (numberRandom + 1));
 
         boolean prize1 = false;
         boolean prize2 = false;
@@ -23,36 +28,26 @@ public class TesteJogo {
         else {
             prize3 = true;
         }
-
-        int numberOfGames = 3;
-        double ganhou = 0;
-
-        for (int i = 0; i < numberOfGames; i++) {
-            Game game = new Game(new Door(prize1),
-                    new Door(prize2),
-                    new Door(prize3),
+            Game game = new Game(new Door(prize1, 1),
+                    new Door(prize2, 2),
+                    new Door(prize3, 3),
                     new User());
 
         List<Boolean> result = game.start();
 
             if (result.get(1) && result.get(0)) {
-                ganhou++;
+                switchWin++;
                 //ganhou e trocou de porta
             }
-
+            if (result.get(1)){
+                keepWin++;
+            }
         }
+        int probability = (switchWin * 100) / numberOfGames;
+        int keepProbability = (keepWin * 100) / numberOfGames;
 
-        // 2 = 100
-        // 1 = x
-        // 2x = 1*100
-        // 2x = 100
-        // x = 100/2
-
-        Double probabilidade = (ganhou * 100) / numberOfGames;
-
-        System.out.println("Quantidade de vezes que trocou e ganhou: " + ganhou);
-        System.out.println("A probabilidade de trocar de porta é: " + probabilidade);
-        System.out.println("Trocou de porta: " + ganhou + " vezes");
-
+        System.out.println("A probabilidade de ganhar sem trocar de porta é: " + keepProbability + "%");
+        System.out.println("A probabilidade de trocar de porta e ganhar é: " + probability + "%");
+        System.out.println("Trocou de porta: " + switchWin + " vezes");
     }
 }
