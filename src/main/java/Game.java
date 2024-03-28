@@ -41,7 +41,7 @@ public class Game {
                 continue;
             }
             currentDoor.setOpen(true);
-            System.out.format("Porta aberta: %d %s\n", i, currentDoor);
+            System.out.format("Porta aberta: %d \n", i);
             break;
         }
 
@@ -50,23 +50,22 @@ public class Game {
 
         int finalDoor =  user.chooseDoor(closedDoors.size());
 
-        System.out.println(closedDoors);
-
         for (Door door : closedDoors) {
             door.setOpen(true);
         }
 
         boolean switchedDoor = false;
         if (doorChoosen == finalDoor){
+            System.out.println("trocou de porta");
             switchedDoor = true;
         }
 
         Boolean won = false;
         if (closedDoors.get(finalDoor).hasPrize) {
             won = true;
-            System.out.println("Você ganhou!!! EBBAAAAA");
+            System.out.println("Você ganhou!!! EBBAAAAA\n");
         }else{
-            System.out.println("Você perdeu!!!!!!!!!!!!!");
+            System.out.println("Você perdeu!!!\n");
         }
 
         List<Boolean> result = Arrays.asList(switchedDoor, won);
