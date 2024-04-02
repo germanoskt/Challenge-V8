@@ -18,9 +18,4 @@ public class Door {
         this.isOpen = false;
         this.doorNumber = doorNumber;
     }
-
-    @Override
-    public String toString() {
-        return "porta " + doorNumber;
-    }
 }

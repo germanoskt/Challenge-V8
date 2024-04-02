@@ -7,7 +7,7 @@ public class TesteJogo {
 
     public static void main(String[] args) {
 
-        int numberOfGames = 1000000;
+        int numberOfGames = 10;
 
         int swap = 0;
         int swapWin = 0;
@@ -17,18 +17,14 @@ public class TesteJogo {
 
         for (int i = 0; i < numberOfGames; i++) {
 
-            int numberRandom = ThreadLocalRandom.current().nextInt(0, 3);
-//            System.out.println("O prêmio está na porta: " + (numberRandom + 1));
+               Boolean prize1 = ThreadLocalRandom.current().nextBoolean();
+               Boolean prize2 = false;
+               Boolean prize3 = false;
 
-            boolean prize1 = false;
-            boolean prize2 = false;
-            boolean prize3 = false;
-
-            if (numberRandom == 0) {
-                prize1 = true;
-            } else if (numberRandom == 1) {
-                prize2 = true;
-            } else {
+            if (!prize1) {
+                prize2 = ThreadLocalRandom.current().nextBoolean();
+            }
+            if (!prize2 && !prize1){
                 prize3 = true;
             }
             Game game = new Game(new Door(prize1, 1),
@@ -36,50 +32,42 @@ public class TesteJogo {
                     new Door(prize3, 3),
                     new User());
 
-            List<Boolean> result = game.start();
+            Boolean[] result = game.start();
 
-            if (result.get(1)) {
+            if (result[1]) {
                 win++;
             }
-
-            if (result.get(0)) {
+            if (result[0]) {
                 swap++;
-                if (result.get(1)) {
+                if (result[1]) {
                     swapWin++;
                 }
             }
-            if (!result.get(0)) {
+            if (!result[0]) {
                 persist++;
-                if (result.get(1)) {
+                if (result[1]) {
                     persistWin++;
                 }
             }
         }
+            System.out.printf("""
+                    Ele trocou %d vezes
+                    Ele não trocou %d vezes
+                    Ele ganhou %d vezes
+                    Ele perdeu %d vezes \n
+                    """, swap, persist, win, (numberOfGames - win));
 
-            System.out.println("ele trocou " + swap + " vezes");
-            System.out.println("ele não trocou " + persist + " vezes");
-            System.out.println("ele ganhou " + win + " vezes");
-            System.out.println("ele perdeu " + (numberOfGames - win) + " vezes");
+            System.out.printf("""
+                    Das %d vezes que ele trocou de porta, ele venceu %d vezes e perdeu %d
+                    Das %d vezes que ele não trocou de porta, ele venceu %d e perdeu %d \n
+                    """, swap, swapWin, (swap - swapWin), persist, persistWin, (persist - persistWin));
 
-            System.out.println("das " + swap + " vezes que ele trocou de porta, ele venceu " + swapWin + " vezes e perdeu " + (swap - swapWin));
-            System.out.println("das " + persist + " vezes que ele não trocou de porta, ele venceu " + persistWin + " e perdeu " + (persist - persistWin));
+                double chancesSwap = (swapWin * 100.0) / swap;
+                double chancesPersist = (persistWin * 100.0) / persist;
 
-            try{
-
-                Double chancesSwap = (swapWin * 100.0) / swap;
-                Double chancesPersist = (persistWin * 100.0) / persist;
-
-                System.out.printf("as chances de vencer  trocando é de %.2f%% e as chances de perder são de %.2f%%", chancesSwap, (100 - chancesSwap));
-                System.out.printf("\nas chances de vencer não trocando é de %.2f%% e as chances de perder são de %.2f%%", chancesPersist, (100 - chancesPersist));
-            } catch (ArithmeticException e){
-                System.out.println(e);
-            }
-
-
-
-
-
-
-
+                System.out.printf("""
+                        As chances de vencer trocando é de %.2f%% e as chances de perder são de %.2f%%
+                        As chances de vencer não trocando é de %.2f%% e as chances de perder são de %.2f%%
+                        """, chancesSwap, (100 - chancesSwap), chancesPersist, (100 - chancesPersist));
     }
 }
