@@ -7,7 +7,14 @@ public class TesteJogo {
 
     public static void main(String[] args) {
 
-        int numberOfGames = Integer.parseInt(args[0]);
+        int numberOfGames;
+
+        try {
+            numberOfGames = Integer.parseInt(args[0]);
+        }
+        catch (RuntimeException e){
+            numberOfGames = 10;
+        }
 
         int swap = 0;
         int swapWin = 0;
@@ -69,5 +76,8 @@ public class TesteJogo {
                         As chances de vencer trocando é de %.2f%% e as chances de perder são de %.2f%%
                         As chances de vencer não trocando é de %.2f%% e as chances de perder são de %.2f%%
                         """, chancesSwap, (100 - chancesSwap), chancesPersist, (100 - chancesPersist));
+
+        System.out.println("a aplicação rodou " + numberOfGames + " vezes");
+
     }
 }
