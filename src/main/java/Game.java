@@ -26,7 +26,7 @@ public class Game {
         doors.stream()
                 .filter(door -> !door.hasPrize && doors.indexOf(door) != doorChoosen)
                 .findFirst()
-                .ifPresent(Door::isOpen);
+                .ifPresent(d -> d.setOpen(true));
 
        List<Door> closedDoors = doors.stream().filter(d -> !d.isOpen).toList();
 

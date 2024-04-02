@@ -7,7 +7,7 @@ public class TesteJogo {
 
     public static void main(String[] args) {
 
-        int numberOfGames = 10;
+        int numberOfGames = Integer.parseInt(args[0]);
 
         int swap = 0;
         int swapWin = 0;
