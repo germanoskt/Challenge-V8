@@ -4,7 +4,14 @@ public class TesteJogo {
 
   public static void main(String[] args) {
 
-    int numberOfGames = 10;
+    int numberOfGames;
+
+    try {
+      numberOfGames = Integer.parseInt(args[0]);
+    }
+    catch (RuntimeException e){
+      numberOfGames = 10;
+    }
 
     int swap = 0;
     int swapWin = 0;
@@ -47,6 +54,9 @@ public class TesteJogo {
         }
       }
     }
+
+    System.out.printf("a aplicação foi iterada %d vezes\n", numberOfGames);
+
     System.out.printf("""
          Ele trocou %d vezes
          Ele não trocou %d vezes
