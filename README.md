@@ -9,7 +9,7 @@
 O caminho é: "Challenge-V8/out/artifacts/JogoDoAdivinha_jar" clique com o botão direito na pasta e selecione "abrir no terminal";
 <img width="254" alt="image" src="https://github.com/germanoskt/Challenge-V8/assets/142634508/def8d360-e76a-479b-85ce-25fef7673011">
 
-## 2. Insira o comando "java -jar JogoDoAdivinha.jar (quantas iterações deseja rodar);
+## 2. Insira o comando "java -jar Challenge-V8.jar <quantas iterações deseja rodar>";
 Se o valor inserido for inválido ou ausente, o sistema realizará 10 iterações
 
 <img width="189" alt="image" src="https://github.com/germanoskt/Challenge-V8/assets/142634508/b53536c0-553b-46da-a5dc-55918292eb70">
