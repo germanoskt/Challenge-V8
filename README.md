@@ -6,7 +6,7 @@
 - JRE(Java Runtime Environment) ou JDK(Java Development Kit), ambos podem ser encontrados neste link: https://www.java.com/;
 
 ## 1. Abra o terminal no local do arquivo executável;
-O caminho é: "Challenge-V8/out/artifacts/JogoDoAdivinha_jar" clique com o botão direito na pasta e selecione "abrir no terminal";
+O caminho é: "Challenge-V8/out/artifacts/Challenge_V8_jar" clique com o botão direito na pasta e selecione "abrir no terminal";
 <img width="254" alt="image" src="https://github.com/germanoskt/Challenge-V8/assets/142634508/def8d360-e76a-479b-85ce-25fef7673011">
 
 ## 2. Insira o comando "java -jar Challenge-V8.jar <quantas iterações deseja rodar>";
