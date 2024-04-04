@@ -1,9 +1,7 @@
 import lombok.ToString;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 @ToString
 public class Game {
 
@@ -26,7 +24,7 @@ public class Game {
         doors.stream()
                 .filter(door -> !door.hasPrize && doors.indexOf(door) != doorChoosen)
                 .findFirst()
-                .ifPresent(Door::isOpen);
+                .ifPresent(door -> door.setOpen(true));
 
        List<Door> closedDoors = doors.stream().filter(d -> !d.isOpen).toList();
 
