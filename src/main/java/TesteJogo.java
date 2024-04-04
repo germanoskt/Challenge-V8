@@ -70,7 +70,7 @@ public class TesteJogo {
 
         System.out.printf("A aplicação foi iterada %d vezes\n",numberOfGames);
 
-        System.out.printf("""
+        System.out.printf("""git  c
                 Ele trocou %d vezes
                 Ele não trocou %d vezes
                 Ele ganhou %d vezes
