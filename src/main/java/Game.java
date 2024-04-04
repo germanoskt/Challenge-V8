@@ -1,7 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
+@Getter
+@Setter
 @ToString
 public class Game {
 
@@ -15,6 +20,10 @@ public class Game {
     this.door2 = door2;
     this.door3 = door3;
     this.user = user;
+  }
+
+  public Game() {
+
   }
 
   public Boolean[] start() {
@@ -37,5 +46,8 @@ public class Game {
     boolean won = closedDoors.get(finalDoor).hasPrize;
 
     return new Boolean[] {switchedDoor, won};
+
   }
+
+
 }
