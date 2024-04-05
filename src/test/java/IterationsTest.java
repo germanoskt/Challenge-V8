@@ -24,13 +24,13 @@ class IterationsTest {
 
         TesteJogo.main(new String[]{"89"});
 
-        String saidaEsperada = ("A aplicação foi iterada 89 vezes");
+        String expectedOutput = ("A aplicação foi iterada 89 vezes");
 
-        String epa = "\n";
-        String[] lines = baos.toString().split(epa);
-        String saidaRecebida = (lines[0]);
+        String split = "\n";
+        String[] lines = baos.toString().split(split);
+        String actualOutput = (lines[0]);
 
-        assertEquals(saidaEsperada, saidaRecebida);
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
@@ -43,15 +43,15 @@ class IterationsTest {
 
         TesteJogo.main(new String[]{"10"});
 
-        double saidaEsperada = (60.0);
+        double expectedOutput = (60.0);
 
 
-        String epa = "As chances de não trocar é de";
-        String[] lines = baos.toString().split(epa);
-        String saidaRecebida = (lines[0]);
+        String split = "2f";
+        String[] lines = baos.toString().split(split);
+        String actualOutput = (lines[0]);
 
-        assertEquals(saidaEsperada, saidaRecebida);
-        Assertions.assertEquals(saidaEsperada, saidaRecebida);
+        assertEquals(expectedOutput, actualOutput);
+        Assertions.assertEquals(expectedOutput, actualOutput);
     }
 
 }
