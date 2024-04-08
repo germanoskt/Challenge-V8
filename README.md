@@ -14,7 +14,7 @@ Se o valor inserido for inválido ou ausente, o sistema realizará 10 iteraçõe
 
 <img width="200px" src="https://github.com/germanoskt/Challenge-V8/assets/142420670/f08b73f6-8920-4f40-9dfc-df1ed28ad5c8">
 
-<img width="800px" src="https://github.com/germanoskt/Challenge-V8/assets/142420670/86bc5e6c-6afa-4081-8a3c-8ebcd574b365">
+<img width="600px" src="https://github.com/germanoskt/Challenge-V8/assets/142420670/86bc5e6c-6afa-4081-8a3c-8ebcd574b365">
 
 ---
 
