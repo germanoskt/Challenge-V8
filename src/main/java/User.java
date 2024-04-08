@@ -7,8 +7,8 @@ public class User {
 
   Random random;
 
-  int chooseDoor(int numberChoosed) {
-    return  random.nextInt(0, numberChoosed);
+  int chooseDoor(int numberOfChoices) {
+    return  random.nextInt(0, numberOfChoices);
   }
 
   public User(Random random) {

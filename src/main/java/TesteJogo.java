@@ -36,7 +36,7 @@ public class TesteJogo {
             return game.start();
     }
 
-    public static int  runGame(int numberOfGames) {
+    public static int runGame(int numberOfGames) {
 
         int swap = 0;
         int swapWin = 0;

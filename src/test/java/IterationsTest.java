@@ -36,7 +36,6 @@ class IterationsTest {
     @Test
     void teste2() {
 
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
@@ -44,7 +43,6 @@ class IterationsTest {
         TesteJogo.main(new String[]{"10"});
 
         double expectedOutput = (60.0);
-
 
         String split = "2f";
         String[] lines = baos.toString().split(split);
