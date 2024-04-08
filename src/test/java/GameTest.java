@@ -13,7 +13,7 @@ class GameTest {
         random.setSeed(1);
 
         Boolean[] result = TesteJogo.createGame(random);
-
+        
         Assertions.assertFalse(result[0], "Usuário não deveria trocar a porta.");
         Assertions.assertFalse(result[1], "Usuário não deveria ter ganho.");
     }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class TesteJogo {
@@ -12,11 +15,42 @@ public class TesteJogo {
             numberOfGames = 10;
         }
 
-        runGame(numberOfGames);
+        List<Integer> result = runGame(numberOfGames);
+
+        int swap = result.get(0);
+        int swapWin = result.get(1);
+        int persist = result.get(2);
+        int persistWin = result.get(3);
+        int win = result.get(4);
+        int chancesSwap = result.get(5);
+        int chancesPersist = result.get(6);
+
+
+
+        System.out.printf("A aplicação foi iterada %d vezes\n",numberOfGames);
+
+        System.out.printf("""
+                Ele trocou %d vezes
+                Ele não trocou %d vezes
+                Ele ganhou %d vezes
+                Ele perdeu %d vezes \n
+                """, swap, persist, win, (numberOfGames - win));
+
+        System.out.printf("""
+                Das %d vezes que ele trocou de porta, ele venceu %d vezes e perdeu %d
+                Das %d vezes que ele não trocou de porta, ele venceu %d e perdeu %d
+                """, swap, swapWin, (swap - swapWin), persist, persistWin, (persist - persistWin));
+
+        System.out.printf(" As chances de vencer trocando é de %d%% e as chances de perder são de %d%%\n" +
+                "As chances de vencer não trocando é de %d%% e as chances de perder são de %d%%\n", chancesSwap,
+                (100 - chancesSwap),
+                chancesPersist,
+                (100 - chancesPersist));
     }
 
 
     public static Boolean[] createGame(Random random) {
+
 
             Boolean prize1 = random.nextBoolean();
             Boolean prize2 = false;
@@ -36,7 +70,7 @@ public class TesteJogo {
             return game.start();
     }
 
-    public static int  runGame(int numberOfGames) {
+    public static List<Integer> runGame(int numberOfGames) {
 
         int swap = 0;
         int swapWin = 0;
@@ -67,31 +101,16 @@ public class TesteJogo {
             }
         }
 
+        int chancesSwap = (swapWin * 100) / swap;
+        int chancesPersist = (persistWin * 100) / persist;
 
-        System.out.printf("A aplicação foi iterada %d vezes\n",numberOfGames);
-
-        System.out.printf("""git  c
-                Ele trocou %d vezes
-                Ele não trocou %d vezes
-                Ele ganhou %d vezes
-                Ele perdeu %d vezes 
-                """, swap, persist, win, (numberOfGames - win));
-
-        System.out.printf("""
-                Das %d vezes que ele trocou de porta, ele venceu %d vezes e perdeu %d
-                 Das %d vezes que ele não trocou de porta, ele venceu %d e perdeu %d 
-                """, swap, swapWin, (swap - swapWin), persist, persistWin, (persist - persistWin));
-
-        double chancesSwap = (swapWin * 100.0) / swap;
-        double chancesPersist = (persistWin * 100.0) / persist;
-
-        System.out.printf(" As chances de vencer trocando é de %.2f%% e as chances de perder são de %.2f%%\n" +
-                "As chances de vencer não trocando é de %.2f%% e as chances de perder são de %.2f%%\n", chancesSwap,
-                (100 - chancesSwap),
-                chancesPersist,
-                (100 - chancesPersist));
-
-        return numberOfGames;
+        return Arrays.asList(swap,
+                swapWin,
+                persist,
+                persistWin,
+                win,
+                chancesSwap,
+                chancesPersist);
     }
 
 }
