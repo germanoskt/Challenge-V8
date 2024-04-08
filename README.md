@@ -12,15 +12,11 @@ O caminho é: "Challenge-V8/out/artifacts/Challenge_V8_jar" clique com o botão 
 ## 2. Insira o comando "java -jar Challenge-V8.jar <quantas iterações deseja rodar>";
 Se o valor inserido for inválido ou ausente, o sistema realizará 10 iterações
 
-<img width="189" alt="image" src="https://github.com/germanoskt/Challenge-V8/assets/142634508/b53536c0-553b-46da-a5dc-55918292eb70">
+![image](https://github.com/germanoskt/Challenge-V8/assets/142420670/f08b73f6-8920-4f40-9dfc-df1ed28ad5c8)
 
-
-<img width="455" alt="image" src="https://github.com/germanoskt/Challenge-V8/assets/142634508/ee12bf52-e10d-4ca3-87c1-6823c7e2b2e3">
-
-
+![image](https://github.com/germanoskt/Challenge-V8/assets/142420670/86bc5e6c-6afa-4081-8a3c-8ebcd574b365)
 
 ---
-
 
 ## Premissas do jogo:
 
@@ -48,7 +44,6 @@ Se o valor inserido for inválido ou ausente, o sistema realizará 10 iteraçõe
 11. **Revelação do Prêmio**:
     - Após a decisão final do jogador, a porta escolhida é aberta.
       Se o prêmio estiver atrás da porta escolhida, o jogador ganha o prêmio. Caso contrário, ele não ganha nada.
-
 
 ## Escolhas do Jogo:
 
