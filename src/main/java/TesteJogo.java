@@ -42,7 +42,7 @@ public class TesteJogo {
                 """, swap, swapWin, (swap - swapWin), persist, persistWin, (persist - persistWin));
 
         System.out.printf(" As chances de vencer trocando é de %d%% e as chances de perder são de %d%%\n" +
-                "As chances de vencer não trocando é de %d%% e as chances de perder são de %d%%\n", chancesSwap,
+                        "As chances de vencer não trocando é de %d%% e as chances de perder são de %d%%\n", chancesSwap,
                 (100 - chancesSwap),
                 chancesPersist,
                 (100 - chancesPersist));
@@ -52,22 +52,22 @@ public class TesteJogo {
     public static Boolean[] createGame(Random random) {
 
 
-            Boolean prize1 = random.nextBoolean();
-            Boolean prize2 = false;
-            Boolean prize3 = false;
+        Boolean prize1 = random.nextBoolean();
+        Boolean prize2 = false;
+        Boolean prize3 = false;
 
-            if (!prize1) {
-                prize2 = random.nextBoolean();
-            }
-            if (!prize2 && !prize1) {
-                prize3 = true;
-            }
-            Game game = new Game(new Door(prize1, 1),
-                    new Door(prize2, 2),
-                    new Door(prize3, 3),
-                    new User(random));
+        if (!prize1) {
+            prize2 = random.nextBoolean();
+        }
+        if (!prize2 && !prize1) {
+            prize3 = true;
+        }
+        Game game = new Game(new Door(prize1, 1),
+                new Door(prize2, 2),
+                new Door(prize3, 3),
+                new User(random));
 
-            return game.start();
+        return game.start();
     }
 
     public static List<Integer> runGame(int numberOfGames) {
