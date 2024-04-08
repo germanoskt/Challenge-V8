@@ -12,7 +12,7 @@ class GameTest {
 
         random.setSeed(1);
 
-        Boolean[] result = TesteJogo.createGame(random);
+        Boolean[] result = new TesteJogo(random).createGame(10);
         
         Assertions.assertFalse(result[0], "Usuário não deveria trocar a porta.");
         Assertions.assertFalse(result[1], "Usuário não deveria ter ganho.");
@@ -25,7 +25,7 @@ class GameTest {
 
         random.setSeed(2);
 
-        Boolean[] result = TesteJogo.createGame(random);
+        Boolean[] result = new TesteJogo(random).createGame(10);
 
         Assertions.assertFalse(result[0], "Usuário não deveria trocar a porta.");
         Assertions.assertTrue(result[1], "Usuário deveria ter ganho.");
@@ -37,7 +37,7 @@ class GameTest {
 
         random.setSeed(6);
 
-        Boolean[] result = TesteJogo.createGame(random);
+        Boolean[] result = new TesteJogo(random).createGame(10);
 
         Assertions.assertTrue(result[0], "Usuário deveria trocar a porta.");
         Assertions.assertFalse(result[1], "Usuário não deveria ter ganho.");
@@ -50,7 +50,7 @@ class GameTest {
 
         random.setSeed(10);
 
-        Boolean[] result = TesteJogo.createGame(random);
+        Boolean[] result = new TesteJogo(random).createGame(10);
 
         Assertions.assertFalse(result[0], "Usuário não deveria trocar a porta.");
         Assertions.assertTrue(result[1], "Usuário deveria ter ganho.");
@@ -63,7 +63,7 @@ class GameTest {
 
         random.setSeed(10);
 
-        Boolean[] result = TesteJogo.createGame(random);
+        Boolean[] result = new TesteJogo(random).createGame(10);
 
         Assertions.assertFalse(result[0], "Usuário não deveria trocar a porta.");
         Assertions.assertTrue(result[1], "Usuário deveria ter ganho.");

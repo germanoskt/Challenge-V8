@@ -2,51 +2,58 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Getter
 @Setter
 @ToString
 public class Game {
 
-  Door door1;
-  Door door2;
-  Door door3;
-  User user;
+    List<Door> doors;
+    User user;
 
-  public Game(Door door1, Door door2, Door door3, User user) {
-    this.door1 = door1;
-    this.door2 = door2;
-    this.door3 = door3;
-    this.user = user;
-  }
+    public Game(List<Door> doors, User user) {
+        this.doors = doors;
+        this.user = user;
+    }
 
-  public Game() {
+    public Game() {
 
-  }
+    }
 
-  public Boolean[] start() {
+    public Boolean[] start(Random random) {
 
-    List<Door> doors = Arrays.asList(door1, door2, door3);
+        int doorChoosen = user.chooseDoor(doors.size());
 
-    int doorChoosen = user.chooseDoor(doors.size());
+        System.out.println("o sistema possui " + doors.size() + " portas");
+        System.out.println("o usuário escolheu a porta de número " + doorChoosen);
+        System.out.println("o prêmio está na porta: " +
+                doors.indexOf(doors.stream().filter(d -> d.hasPrize).findFirst().get()));
 
-      doors.stream()
-              .filter(door -> !door.hasPrize && doors.indexOf(door) != doorChoosen)
-              .findFirst()
-              .ifPresent(door -> door.setOpen(true));
+        List<Door> teste = doors.stream()
+                .filter(door -> !door.hasPrize && doors.indexOf(door) != doorChoosen).toList();
 
-      List<Door> closedDoors = doors.stream().filter(d -> !d.isOpen).toList();
+        teste.get(random.nextInt(teste.size())).setOpen(true);
 
-      int finalDoor = user.chooseDoor(closedDoors.size());
+        System.out.println(teste);
 
-      boolean switchedDoor = !doors.get(doorChoosen).equals(closedDoors.get(finalDoor));
-      boolean won = closedDoors.get(finalDoor).hasPrize;
+        for (int i = 0; i < doors.size(); i++) {
+            System.out.println("a porta de número " + i + " está: " + doors.get(i).isOpen);
+        }
 
-      return new Boolean[]{switchedDoor, won};
 
-  }
+        List<Door> closedDoors = doors.stream().filter(d -> !d.isOpen).toList();
+
+        int finalDoor = user.chooseDoor(closedDoors.size());
+
+        boolean switchedDoor = !doors.get(doorChoosen).equals(closedDoors.get(finalDoor));
+        System.out.println("Trocou para a porta: " + finalDoor);
+        boolean won = closedDoors.get(finalDoor).hasPrize;
+        System.out.println(won);
+
+        return new Boolean[]{switchedDoor, won};
+
+    }
 
 }

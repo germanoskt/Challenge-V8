@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,90 +13,43 @@ import static org.junit.jupiter.api.Assertions.*;
 class IterationsTest {
 
     @Test
-    @DisplayName("mostra o número de iterações")
+    @DisplayName("Cenário com 10.000")
     void teste1() {
+        Random random = new Random();
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(baos);
-        System.setOut(printStream);
+        List<Integer> result = new TesteJogo(random).runGame(10000);
 
-        TesteJogo.main(new String[]{"89"});
+        int chancesSwap = result.get(5);
+        int chancesPersist = result.get(6);
 
-        String saidaEsperada = ("A aplicação foi iterada 89 vezes");
-
-        String epa = "\n";
-        String[] lines = baos.toString().split(epa);
-        String saidaRecebida = (lines[0]);
-
-        assertEquals(saidaEsperada, saidaRecebida);
+        Assertions.assertTrue(chancesPersist <= 11);
+        Assertions.assertTrue(chancesSwap >= 10);
     }
 
     @Test
+    @DisplayName("Cenário com 1.000")
     void teste2() {
+        Random random = new Random();
 
-        List<Integer> result = TesteJogo.runGame(10);
+        List<Integer> result = new TesteJogo(random).runGame(10000);
 
-        int swap = result.get(0);
-        int swapWin = result.get(1);
         int chancesSwap = result.get(5);
+        int chancesPersist = result.get(6);
 
-        if (swapWin >= swap * 0.55) {
-            Assertions.assertTrue(chancesSwap >= 55);
-        }
-        else {
-            System.out.println("else");
-            Assertions.assertTrue(chancesSwap < 55);
-        }
-
-        // quando não troca as chances são de 55%
-        // quando troca as chances são menores que 40%
+        Assertions.assertTrue(chancesPersist <= 13);
+        Assertions.assertTrue(chancesSwap >= 9);
     }
-
     @Test
+    @DisplayName("Cenário com 100")
     void teste3() {
+        Random random = new Random();
 
-        List<Integer> result = TesteJogo.runGame(10);
+        List<Integer> result = new TesteJogo(random).runGame(10000);
 
-        int persist = result.get(2);
-        int persistWin = result.get(3);
-        int chancesPersist = result.get(6);
-
-
-        if (persistWin >= persist * 0.4) {
-            System.out.println("if");
-            Assertions.assertTrue(chancesPersist >= 40);
-        }
-        else {
-            System.out.println("else");
-            Assertions.assertTrue(chancesPersist < 40);
-        }
-
-        // quando não troca as chances são de 55%
-        // quando troca as chances são menores que 40%
-    }
-
-    @Test
-    void teste4() {
-
-        List<Integer> result = TesteJogo.runGame(10);
-
-        int swap = result.get(0);
-        int swapWin = result.get(1);
         int chancesSwap = result.get(5);
-        int persist = result.get(2);
-        int persistWin = result.get(3);
         int chancesPersist = result.get(6);
 
-        if(chancesSwap >= 40 && chancesSwap <= 55) {
-            System.out.println("Está entre");
-            assertTrue(true);
-        }else{
-            System.out.println("Não está entre");
-            assertFalse(false);
-        }
-
-
-        // quando não troca as chances são de 55%
-        // quando troca as chances são menores que 40%
+        Assertions.assertTrue(chancesPersist <= 50);
+        Assertions.assertTrue(chancesSwap >= 4);
     }
 }

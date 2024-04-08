@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 public class TesteJogo {
+    Random random;
+
+    public TesteJogo(Random random) {
+        this.random = random;
+    }
 
     public static void main(String[] args) {
 
@@ -12,10 +17,10 @@ public class TesteJogo {
         try {
             numberOfGames = Integer.parseInt(args[0]);
         } catch (RuntimeException e) {
-            numberOfGames = 10;
+            numberOfGames = 100;
         }
 
-        List<Integer> result = runGame(numberOfGames);
+        List<Integer> result = new TesteJogo(new Random()).runGame(numberOfGames);
 
         int swap = result.get(0);
         int swapWin = result.get(1);
@@ -26,8 +31,7 @@ public class TesteJogo {
         int chancesPersist = result.get(6);
 
 
-
-        System.out.printf("A aplicação foi iterada %d vezes\n",numberOfGames);
+        System.out.printf("A aplicação foi iterada %d vezes\n", numberOfGames);
 
         System.out.printf("""
                 Ele trocou %d vezes
@@ -49,28 +53,26 @@ public class TesteJogo {
     }
 
 
-    public static Boolean[] createGame(Random random) {
+    public Boolean[] createGame(int numberOfDoors) {
 
+        List<Door> doors = new ArrayList<>();
 
-        Boolean prize1 = random.nextBoolean();
-        Boolean prize2 = false;
-        Boolean prize3 = false;
+        for (int i = 0; i < numberOfDoors; i++) {
+            Door door = new Door();
+            doors.add(door);
 
-        if (!prize1) {
-            prize2 = random.nextBoolean();
         }
-        if (!prize2 && !prize1) {
-            prize3 = true;
-        }
-        Game game = new Game(new Door(prize1, 1),
-                new Door(prize2, 2),
-                new Door(prize3, 3),
+
+        doors.get(random.nextInt(numberOfDoors)).setHasPrize(true);
+
+
+        Game game = new Game(doors,
                 new User(random));
 
-        return game.start();
+        return game.start(random);
     }
 
-    public static List<Integer> runGame(int numberOfGames) {
+    public List<Integer> runGame(int numberOfGames) {
 
         int swap = 0;
         int swapWin = 0;
@@ -80,9 +82,7 @@ public class TesteJogo {
 
         for (int i = 0; i < numberOfGames; i++) {
 
-            Random random = new Random();
-
-            Boolean[] result = createGame(random);
+            Boolean[] result = createGame(10);
 
             if (result[1]) {
                 win++;
@@ -102,7 +102,13 @@ public class TesteJogo {
         }
 
         int chancesSwap = (swapWin * 100) / swap;
-        int chancesPersist = (persistWin * 100) / persist;
+        int chancesPersist = 0;
+
+        try {
+            chancesPersist = (persistWin * 100) / persist;
+        } catch (ArithmeticException e) {
+            System.out.println(e);
+        }
 
         return Arrays.asList(swap,
                 swapWin,

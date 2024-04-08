@@ -5,14 +5,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Door { boolean hasPrize;
+public class Door {
+  boolean hasPrize;
   boolean isOpen;
-  int doorNumber;
 
-  public Door(boolean hasPrize, int doorNumber) {
-    this.hasPrize = hasPrize;
+  public Door() {
+    this.hasPrize = false;
     this.isOpen = false;
-    this.doorNumber = doorNumber;
   }
 
 }
