@@ -13,14 +13,17 @@ public class TesteJogo {
     public static void main(String[] args) {
 
         int numberOfGames;
+        int numberOfDoors;
 
         try {
             numberOfGames = Integer.parseInt(args[0]);
+            numberOfDoors = Integer.parseInt(args[1]);
         } catch (RuntimeException e) {
             numberOfGames = 100;
+            numberOfDoors = 10;
         }
 
-        List<Integer> result = new TesteJogo(new Random()).runGame(numberOfGames);
+        List<Integer> result = new TesteJogo(new Random()).runGame(numberOfGames, numberOfDoors);
 
         int swap = result.get(0);
         int swapWin = result.get(1);
@@ -72,7 +75,7 @@ public class TesteJogo {
         return game.start(random);
     }
 
-    public List<Integer> runGame(int numberOfGames) {
+    public List<Integer> runGame(int numberOfGames, int numberOfDoors) {
 
         int swap = 0;
         int swapWin = 0;
@@ -82,7 +85,7 @@ public class TesteJogo {
 
         for (int i = 0; i < numberOfGames; i++) {
 
-            Boolean[] result = createGame(10);
+            Boolean[] result = createGame(numberOfDoors);
 
             if (result[1]) {
                 win++;
